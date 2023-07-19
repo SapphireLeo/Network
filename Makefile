@@ -1,14 +1,17 @@
 #Makefile
-all: sum-test
+all: add-nbo
 
-sum-test: sum.o main.o
-	g++ -o sum-test sum.o main.o
+add-nbo: read_4bytes.o main.o
+	g++ -o add-nbo read_4bytes.o main.o
 
-main.o: sum.h main.cpp
+main.o: read_4bytes.h main.cpp
+	g++ -c main.o main.cpp
 
-sum.o: sum.h sum.cpp
+read_4bytes.o: read_4bytes.h read_4bytes.cpp
+	g++ -c read_4bytes.o read_4bytes.cpp
+
 
 clean:
-	rm -f sum-test
+	rm -f add-nbo
 	rm -f *.o
 
